@@ -126,7 +126,18 @@ $ git checkout iss53
 
 ### Слияние веток
 
-Для того чтобы дабавить ветку в текущую ветку используется команда *git merge <name branch>*
+Для того чтобы дабавить ветку в текущую ветку используется команда *`git merge <name branch>`*
+
+Пример слияние ветки *`hotfix`* с *`веткой`* master:
+```
+$ git checkout master
+$ git merge hotfix
+Updating f42c576..3a0874c
+Fast-forward
+ index.html | 2 ++
+ 1 file changed, 2 insertions(+)
+ ```
+
 
 ### Удаление веток
 
