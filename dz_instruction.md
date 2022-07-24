@@ -51,6 +51,7 @@ $ git checkout testing
 В результате указатель `HEAD` переместится на ветку `testing`.
 
 ### Создание и переключение ветки
+
 Чтобы создать ветку и сразу переключиться на нее, можно выполнить команду *`git checkout`* с параметром *`-b`*:
 ```
 $ git checkout -b iss53
@@ -64,7 +65,40 @@ $ git checkout iss53
 
 ### Слияние веток
 
-Для того чтобы дабавить ветку в текущую ветку используется команда *git merge <name branch>*
+Для того чтобы дабавить ветку в текущую ветку используется команда *`git merge <name branch>`*
+
+Если вы получите примерно такое сообщение о конфликте слияния:
+```
+$ git merge iss53
+Auto-merging index.html
+CONFLICT (content): Merge conflict in index.html
+Automatic merge failed; fix conflicts and then commit the result.
+```
+Git не создал коммит слияния автоматически. Он остановил процесс до тех пор, пока вы не разрешите конфликт. Чтобы в любой момент после появления конфликта увидеть, какие файлы не объединены, вы можете запустить **_`git status`_**:
+```
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+    both modified:      index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+Всё, где есть неразрешённые конфликты слияния, перечисляется как неслитое. В конфликтующие файлы Git добавляет специальные маркеры конфликтов, чтобы вы могли исправить их вручную. В вашем файле появился раздел, выглядящий примерно так:
+```
+  <<<<<<< HEAD:index.html
+<div id="footer">contact : email.support@github.com</div>
+=======
+<div id="footer">
+ please contact us at support@github.com
+</div>
+>>>>>>> iss53:index.html
+```
+Это означает, что версия из *`HEAD`* (вашей ветки *`master`*, поскольку именно её вы извлекли перед запуском команды слияния) — это верхняя часть блока (всё, что над =======), а версия из вашей ветки iss53 представлена в нижней части. Чтобы разрешить конфликт, придётся выбрать один из вариантов, либо объединить содержимое.
 
 ### Удаление веток
 
