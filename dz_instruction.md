@@ -209,6 +209,21 @@ error: The branch 'testing' is not fully merged.
 If you are sure you want to delete it, run 'git branch -D testing'.
 ```
 
+## Работа с удаленными репозиториями
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Как получить помощь?
 
 Если вам нужна помощь при использовании Git, есть три способа открыть страницу руководства по любой команде Git:
